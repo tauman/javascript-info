@@ -7,11 +7,13 @@
 - [Implementing Promises](#section4)
 
 <div id='section1'/>
+
 ## Using Promises
 
 Promises provide a way to invoke an asynchronous function and specify what code to run in the event that the function call succeeds or fails. The `Promise` class is a fundamental part of **ES6** JavaScript and it provides most of the functionality you will need for responding to promise lifecycle events (i.e. when a promise resolves or rejects), invoking asynchronous functions in parallel), explicitly resolving or rejecting a promise, or even implementing your own promises.
 
 ### Responding to Resolution and Rejection
+
 Using the `then()` and `catch()` functions, we respond to the success or failure of a promise. Both `then()` and `catch()` a function with a single parameter:
 ```
 successPromise.then(value => {
@@ -22,6 +24,7 @@ failPromise.catch(value => {
     // failure processing code
 });
 ```
+
 Additionally, we can chain those together to respond to success and failure:
 ```
 aPromise
@@ -32,6 +35,7 @@ aPromise
         // failure processing code
     })
 ```
+
 Alternatively, we can include success and error handling code with `then()` call:
 ```
 // This identical in effect to using then() and catch()
@@ -68,7 +72,9 @@ Promise.reject('ERROR')
 ```
 
 <div id='section2'/>
+
 ## Promise Chaining
+
 If the function you pass to `then()` or `catch()` returns a value, that value will be returned by `then()` or `catch()` wrapped in a promise, unless the value itself is a promise, in which case it will be returned directly. This allows you to chain promises together:
 ```
 Promise.resolve(5)
@@ -82,6 +88,7 @@ Promise.resolve(5)
 
 // prints "5", then prints "6"
 ```
+
 If any promise in this chain rejects, the rejection will be handled by the first `catch()` in the chain:
 ```
 Promise.resolve(5)
@@ -98,6 +105,7 @@ Promise.resolve(5)
 
 // prints "5", then prints "ERROR: 6"
 ```
+
 Here's a complex example:
 ```
 Promise.resolve(5)
@@ -119,6 +127,7 @@ Promise.resolve(5)
 
 // prints "5", prints "6", and prints "6" again
 ```
+
 Now add another `then()` after the `catch()` and note how the `catch()` is skipped
 ```
 Promise.resolve(5)
@@ -143,6 +152,7 @@ Promise.resolve(5)
 
 // prints "5", prints "6", prints "6" again, and finally prints "7"
 ```
+
 Now try changing step 2 in the above example to return Promise.reject(r) to see what happens:
 ```
 Promise.resolve(5)
@@ -168,6 +178,7 @@ Promise.resolve(5)
 
 // prints "5", prints "6", prints "ERROR: 6", and finally prints "10"
 ```
+
 Notice how a rejection causes the chain to jump to the first `catch()`. Also note that the catch function returns another promise. The outcome is also the same if, instead of returning a Promise that rejects in step 2, the function throws:
 ```
 Promise.resolve(5)
@@ -193,11 +204,14 @@ Promise.resolve(5)
 
 // prints "5", prints "6", prints "ERROR: 6", and finally prints "10"
 ```
+
 Promise chaining allows you to write straightforward code to chain together a series of asynchronous actions.
 
 
 <div id='section3'/>
+
 ## Promises in Parallel
+
 The `Promise` class provides two methods for running promises in parallel: `Promise.all()` and `Promise.race()`; both methods take an array of promises.
 
 `Promise.all()` will run all promises in parallel, returning a promise that resolves to an array of values from all of the promise resolutions. An example should clarify that:
@@ -208,6 +222,7 @@ Promise.all([Promise.resolve(4), Promise.resolve(5), Promise.resolve(6)])
 
 // prints the array [4, 5, 6]
 ```
+
 However, if any of the promises in the array reject, then the promise returned by `all()` rejects with the value of the first rejection:
 ```
 Promise.all([Promise.resolve(4), Promise.reject(5), Promise.resolve(6)])
@@ -245,7 +260,9 @@ Promise.race([Promise.reject(4), Promise.resolve(5), Promise.reject(6)])
 ```
 
 <div id='section4'/>
+
 ## Implementing Promises
+
 Creating your own promise implementations is relatively easy. You just create an instance of `Promise` and pass a function that takes two parameters: `resolve` and `reject`. Then you invoke the `resolve` or `reject` parameter when your promise resolves or rejects. We'll demonstrate this with a function that takes a parameter and resolves with that parameter if it is a number and rejects with that parameter if it is not a number:
 ```
 function asyncNumberTest(value) {
@@ -270,5 +287,6 @@ asyncNumberTest('bogus')
 
 // prints "Error: 'bogus' is not a numeric value"
 ```
+
 Implementing your own promises allows you to wrap an asynchronous function that takes a callback in a promise. You can find an example of this in [Converting Between Paradigms](./asynchronous/converting-between-paradigms.md).
 

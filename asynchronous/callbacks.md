@@ -6,6 +6,7 @@
 - [The `async` Module](#section3)
 
 <div id='section1'/>
+
 ## Implementing Callbacks
 
 A callback is a function which is invoked upon the completion or failure of an asynchronous action, such as an HTTP request or I/O. Although Promises and `async` functions have mostly replaced callbacks in JavaScript development, there are still older libraries that use the callback paradigm.
@@ -127,6 +128,7 @@ fs.readFile(credFile, (error, result) => {
 ```
 
 <div id='section2'/>
+
 ## Implementing a Function that Takes a Callback
 
 If you are working within legacy code that uses callbacks, you should probably stay within that paradigm when adding or updating functionality rather than mixing in the Promise and/or async-await paradigm for asynchronous code. As an example, we will implement a simple function that adds 5 to a number and returns the result. If the value passed to the function is not a number, then the function will throw an `Error()`.
@@ -236,6 +238,7 @@ module.exports = fetchUser;
 ```
 
 <div id='section3'/>
+
 ## The `async` module
 
 When implementing asynchronous functions involving multiple operations using callbacks, you can quickly get into the "callback step", where multiple asynchronous function calls are nested. This can occur if you are writing a function that needs to invoke a set of asynchronous functions in series, especially where the results of one function are used to call the next function. Alternatively, you might need to invoke a set of asynchronous functions that can be executed in parallel. Or perhaps you need to invoke an asynchronous function repeatedly until some condition is met. The `async` library provides utility functions for all of these, as well as some familiar functional operations such as `each()` and `map()`. Also, the `async` module provides a queue for processing asynchronous functions out of a queue.

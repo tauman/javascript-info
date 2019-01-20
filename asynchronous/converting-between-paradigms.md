@@ -12,9 +12,11 @@
 In general, it is advisable not to directly mix asynchronous paradigms, as this code can be confusing or difficult to analyze. For example, consider if you were writing a two functions: one makes an HTTP GET and saves the content in a file, and a second that loads a file and then POSTs it to an endpoint. If we are using the Node.js `fs` module for file I/O and the `axios` module for HTTP calls, we end up mixing callbacks and promises.
 
 <div id="section1"/>
+
 ## Callback Paradigm
 
 <div id="section2"/>
+
 ### Mixed Implementation
 
 An implementation of our two functions in the callback paradigm might look like:
@@ -53,6 +55,7 @@ function loadAndPost(file, url, callback) {
 ```
 
 <div id="section3"/>
+
 ### Pure Callback Implementation
 
 Since our operations are simple, the two functions, `saveFromUrl()` and `loadAndPost()` are not too difficult to follow. However, we can make them easier to understand if we wrap our calls to `axios.get()` and `axios.post()` in functions that take a callback:
@@ -127,9 +130,11 @@ function loadAndPost(file, url, callback) {
 While having the nested "stepped" callbacks can get messy with more than two steps, it is consistent and usually easier to follow that a mix of callbacks and promises.
 
 <div id="section4"/>
+
 ### Promise Paradigm
 
 <div id="section5"/>
+
 ### Mixed Implementation
 
 An implementation of our two functions in the promise paradigm might look like:
@@ -172,6 +177,7 @@ function loadAndPost(file, url) {
 ```
 
 <div id="section6">
+
 ## Pure Promise Implementation
 
 Again, our operations are simple, the two functions, `saveFromUrl()` and `loadAndPost()` are not too difficult to follow. However, we can make them easier to understand if we wrap our calls to `fs.readFile()` and `fs.writeFile()` in functions that return a promise:
@@ -243,6 +249,7 @@ function loadAndPost(file, url) {
 ```
 
 <div id='section7'/>
+
 ## `async` Paradigm
 
 Since `async-await` and promises are interchangeable, the pure `async` implementation should be trivial. Note that `async-await` does not provide a way to directly wrap the callback code, however we can use a promise implementation and then just treat it as an `async` function:
