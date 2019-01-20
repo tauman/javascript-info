@@ -1,5 +1,11 @@
 # Callbacks
 
+## Contents
+- [Implementing Callbacks](#section1)
+- [Implementing a Function that Takes a Callback](#section2)
+- [The `async` Module](#section3)
+
+<div id='section1'/>
 ## Implementing Callbacks
 A callback is a function which is invoked upon the completion or failure of an asynchronous action, such as an HTTP request or I/O. Although Promises and `async` functions have mostly replaced callbacks in JavaScript development, there are still older libraries that use the callback paradigm.
 
@@ -111,6 +117,7 @@ fs.readFile(credFile, (error, result) => {
 }
 ```
 
+<div id='section2'/>
 ## Implementing a Function that Takes a Callback
 If you are working within legacy code that uses callbacks, you should probably stay within that paradigm when adding or updating functionality rather than mixing in the Promise and/or async-await paradigm for asynchronous code. As an example, we will implement a simple function that adds 5 to a number and returns the result. If the value passed to the function is not a number, then the function will throw an `Error()`.
 
@@ -214,5 +221,142 @@ function fetchUser(id, callback) {
 
 module.exports = fetchUser;
 ```
+<div id='section3'/>
+## The `async` module
+
+When implementing asynchronous functions involving multiple operations using callbacks, you can quickly get into the "callback step", where multiple asynchronous function calls are nested. This can occur if you are writing a function that needs to invoke a set of asynchronous functions in series, especially where the results of one function are used to call the next function. Alternatively, you might need to invoke a set of asynchronous functions that can be executed in parallel. Or perhaps you need to invoke an asynchronous function repeatedly until some condition is met. The `async` library provides utility functions for all of these, as well as some familiar functional operations such as `each()` and `map()`. Also, the `async` module provides a queue for processing asynchronous functions out of a queue.
 
 
+<!---
+Here are a few examples of what the `async` module provides:
+
+### Multi-step Waterfall Process
+If you are writing a multi-step operation where you are taking the result of one operation and using it for the next operation, it might look something like the following function, which gets a post and from the id of that post, gets the username and email for the user who wrote the post, and finally writes everything to file. First we'll define our fetch functions:
+```
+const request = require('request');
+
+const urlPost = 'https://jsonplaceholder.typicode.com/posts';
+const urlUser = 'https://jsonplaceholder.typicode.com/users';
+
+
+function fetchUserForPost(postId, callback) {
+    const url = `${urlPost}/${id}`;
+    request.get(url, (error, result, body) => {
+        if (error) {
+            return callback(error);
+        }
+
+        let post;
+        try {
+            post = JSON.parse(string);
+        } catch(error) {
+            return callback(error);
+        }
+
+        if (!post.userId) {
+            return callback(`Unable to get valid post for id "${id}"`);
+        }
+
+        return callback(null, post.userId);
+    })
+}
+
+function fetchUserInfo(userId, callback) {
+    const url = `${urlPost}/${id}`;
+    request.get(url, (error, result, body) => {
+        if (error) {
+            return callback(error);
+        }
+
+        let user;
+        try {
+            user = JSON.parse(string);
+        } catch(error) {
+            return callback(error);
+        }
+
+        if (!user.email || !user.username) {
+            return callback(`Unable to get valid email and/or username id "${id}"`);
+        }
+
+        return callback(null, { email: user.email, username: user.username });
+    })
+}
+
+function writeFile(filename, info, callback) {
+    const infoString = JSON.stringify(info);
+
+    fs.writeFile(filename, infoString, (error, result) => {
+        if (error) {
+            return callback(error);
+        }
+
+        return callback();
+    });
+}
+
+function buildInfoObject(postId, userId, userInfo) {
+    return {
+        postId,
+        userId,
+        email: userInfo.email,
+        username: userInfo.username
+    };
+}
+
+module.exports.fetchUserForPost = fetchUserForPost;
+module.exports.fetchUserInfo = fetchUserInfo;
+module.exports.buildInfoObject = buildInfoObject;
+```
+Okay, now here we chain those together
+```
+// Note the "step" of one callback inside another. This is trivial
+// if only one is nested, but in a multi-step process, this could
+// quickly get out of hand.
+function writeInfoForPost(filename, postId, callback) {
+    fetchUserForPost(postId, (error, userId) => {
+        if(error) {
+            return callback(error);
+        }
+
+        fetchUserInfo(userId, (error, userInfo) => {
+            if(error) {
+                return callback(error);
+            }
+
+            const infoObject = buildInfoObject(postId, userId, userInfo);
+
+            writeFile(filename, infoObject, error => {
+                if (error) {
+                    return callback(error);
+                }
+
+                return callback(null, infoObject);
+            });
+        });
+    });
+}
+```
+Now let's look at the same operation using the `waterfall` function:
+```
+const async = require('async');
+
+// create an async function and bind 'postId'. The signature
+// of the bound function will be:
+// function(userId, userInfo, callback)
+const async.asyncify(buildInfoObject).bind(null, postId);
+
+function fetchUserInfoForPost(postId, callback) {
+    async.waterFall([
+        // bind 'postId' to fetchUserForPost()
+        fetchUserForPost.bind(null, postId),
+        // now fetchUserInfo() will use the results of the last operation
+        fetchUserInfo,
+
+        writeFile
+    ], (error, result) => {
+        return callback(error, result);
+    });
+}
+```
+--->
