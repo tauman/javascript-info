@@ -221,6 +221,7 @@ function fetchUser(id, callback) {
 
 module.exports = fetchUser;
 ```
+
 <div id='section3'/>
 ## The `async` module
 
@@ -237,7 +238,6 @@ const request = require('request');
 
 const urlPost = 'https://jsonplaceholder.typicode.com/posts';
 const urlUser = 'https://jsonplaceholder.typicode.com/users';
-
 
 function fetchUserForPost(postId, callback) {
     const url = `${urlPost}/${id}`;
