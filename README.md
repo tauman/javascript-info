@@ -13,6 +13,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Callbacks](./asynchronous/callbacks.md)
 - [Promises](./asynchronous/promises.md)
 - [Async-Await](./asynchronous/async-await.md)
+- [Converting Between Paradigms](./asynchronous/converting-between-paradigms.md)
 
 ## Functions
 - [The Function Syntax Types](./functions/syntax.md)
