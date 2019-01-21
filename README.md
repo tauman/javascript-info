@@ -14,6 +14,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Promises](./asynchronous/promises.md)
 - [Async-Await](./asynchronous/async-await.md)
 - [Converting Between Paradigms](./asynchronous/converting-between-paradigms.md)
+- [Miscellaneous Asynchronous Topics](./asynchronous/miscellaneous.md)
 
 ## Functions
 - [The Function Syntax Types](./functions/syntax.md)
