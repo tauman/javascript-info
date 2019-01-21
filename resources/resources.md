@@ -32,5 +32,6 @@
 
 ## Books
 
-![Effective JavaScript](../images/EffectiveJavaScript.png)
-![Understanding ECMAScript 6](../images/UnderstandingECMAScript6.png)
+![Learning JavaScript](../images/LearningJavaScript.png?s=522)
+![Effective JavaScript](../images/EffectiveJavaScript.png?s=522)
+![Understanding ECMAScript 6](../images/UnderstandingECMAScript6.png?s=524)
