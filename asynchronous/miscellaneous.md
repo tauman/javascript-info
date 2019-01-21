@@ -66,7 +66,7 @@ A page of results will look like:
 }
 ```
 
-Here is one solution:
+Here is one solution (note the asynchronous recursion):
 ```
 const request = require('request');
 
