@@ -38,7 +38,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 ## ES6 Containers:
 - [Set](./containers/set.md) **(TODO)**
 - [Map](./containers/map.md) **(TODO)**
-- [A Use for WeakMap](./containers/weakmap.md) **(TODO)**
+- [A Use for WeakMap](./containers/weakmap.md)
 
 ## JavaScript and ES6 Resources
 - [Books and Websites](./resources/resources.md) **(TODO)**
