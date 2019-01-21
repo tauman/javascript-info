@@ -39,3 +39,6 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Set](./containers/set.md) **(TODO)**
 - [Map](./containers/map.md) **(TODO)**
 - [A Use for WeakMap](./containers/weakmap.md) **(TODO)**
+
+## JavaScript and ES6 Resources
+- [Books and Websites](./resources/resources.md) **(TODO)**
