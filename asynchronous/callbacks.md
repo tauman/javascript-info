@@ -13,19 +13,19 @@ A callback is a function which is invoked upon the completion or failure of an a
 
 A function that takes a callback will typically be of the form:
 
-```
+```js
 function foo(param1...paramN, callback)
 ```
 
 That is, the asynchronous function will take zero or more execution parameters and a final callback parameter, which will usually be a function of the form:
-```
+```js
 function callback(error, result, optionalResult..)
 ```
 
 This callback function will be invoked upon the completion or the failure of the asynchronous task. In the event of an error, the `error` parameter will typically be populated with a string, object, or Error instance to indicate that an error has occurred along with typical error information. If the asynchronous action is successful, the `error` parameter will be `undefined` or `null` and the `result` parameter will be populated with the result of the action. Note that an asynchronous action might not return a result, in which case, the callback might only take the `error` parameter.
 
 Here is a simple implementation of a callback:
-```
+```js
 function callback(error, result) {
     if (error) {
         // Do error handling stuff here
@@ -38,12 +38,12 @@ function callback(error, result) {
 ```
 
 As an example, let's consider how we would use the **Node.js** `fs` module to read a text file. This module includes a `readFile()` function which takes a path, an optional second parameter with option information, and a callback:
-```
+```js
 fs.readFile(path[, options], callback)
 ```
 
 We can ignore the `options` parameter as the defaults will work okay for our purposes. A simple program to read the **AWS** credentials file on a Mac OS X machine might start like this:
-```
+```js
 const fs = require('fs');
 const credFile = `${process.env.HOME}/.aws/credentials`;
 
@@ -51,7 +51,7 @@ fs.readFile(credFile, callback);
 ```
 
 Now we need to implement the `callback` function:
-```
+```js
 /**
  * The function checks to see if the file was read successfully.
  * If there was an error, print the error and return. If the read
@@ -70,7 +70,7 @@ function callback(error, result) {
 ```
 
 Now we can put this together into a utility program. If you save this program in a node project, you should be able to run it at the command line.
-```
+```js
 const fs = require('fs');
 const credFile = `${process.env.HOME}/.aws/credentials`;
 
@@ -94,7 +94,7 @@ fs.readFile(credFile, callback);
 ```
 
 Often, when the callback implementation is trivial, the callback function will be passed as an inline definition:
-```
+```js
 const fs = require('fs');
 const credFile = `${process.env.HOME}/.aws/credentials`;
 
@@ -111,7 +111,7 @@ fs.readFile(credFile, function(error, result) {
 ```
 
 Or even better, using an arrow function:
-```
+```js
 const fs = require('fs');
 const credFile = `${process.env.HOME}/.aws/credentials`;
 
@@ -134,7 +134,7 @@ fs.readFile(credFile, (error, result) => {
 If you are working within legacy code that uses callbacks, you should probably stay within that paradigm when adding or updating functionality rather than mixing in the Promise and/or async-await paradigm for asynchronous code. As an example, we will implement a simple function that adds 5 to a number and returns the result. If the value passed to the function is not a number, then the function will throw an `Error()`.
 
 Our initial implementation will be synchronous:
-```
+```js
 function add5(num) {
     if (typeof num !== 'number') {
         throw new Error(`Value passed was not a number`);
@@ -146,7 +146,7 @@ function add5(num) {
 ```
 
 Now, we will make this an asynchronous call, by adding a `callback` parameter. and through the use of `setImmediate()`. Remember that callback functions should have the signature: `function(error, result)`:
-```
+```js
 function add5(num, callback) {
     // these are the return values for the callback function:
     let error = null;
@@ -166,7 +166,7 @@ function add5(num, callback) {
 ```
 
 The above example was somewhat nonsensical. There was no real reason to implment that as an asynchronous function. Now we will create one that is somewhat more realistic. Our next function will take an `id` and call a REST endpoint with that value using the `request` module and return either the result or the error if that fails. Since making an HTTP call is asynchronous, our function will have to be asynchronous as well. Here is an initial implementation:
-```
+```js
 // you will need to "npm install" this module
 const request = require('request');
 
@@ -196,7 +196,7 @@ module.exports = fetchUser;
 ```
 
 Finally, for the sake of completeness, we will add some data validation so that even if the `request` call is successful, our function will return an error unless the HTTP status code was 200 and the result was valid JSON:
-```
+```js
 const request = require('request');
 
 const restUrl = 'https://jsonplaceholder.typicode.com/users';

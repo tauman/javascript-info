@@ -15,7 +15,7 @@ Promises provide a way to invoke an asynchronous function and specify what code 
 ### Responding to Resolution and Rejection
 
 Using the `then()` and `catch()` functions, we respond to the success or failure of a promise. Both `then()` and `catch()` a function with a single parameter:
-```
+```js
 successPromise.then(value => {
     // success processing code
 });
@@ -26,18 +26,18 @@ failPromise.catch(value => {
 ```
 
 Additionally, we can chain those together to respond to success and failure:
-```
+```js
 aPromise
     .then(success => {
         // success processing code
     })
     .catch(failure => {
         // failure processing code
-    })
+    });
 ```
 
 Alternatively, we can include success and error handling code with `then()` call:
-```
+```js
 // This identical in effect to using then() and catch()
 aPromise.then(
     success => {
@@ -45,7 +45,7 @@ aPromise.then(
     },
     (failure => {
         // failure processing code
-    })
+    });
 ```
 
 Now we can try some specific code, but first we'll need to understand two functions: `Promise.resolve()` and `Promise.reject()`.
@@ -57,7 +57,7 @@ Now, using those functions, we can show how to handle promise resolution.
 
 This code will print: `Resolved with 5`:
 
-```
+```js
 Promise.resolve(5)
     .then(r => console.log(`Resolved with ${r}`))
     .catch(e => console.log(`Rejected with ${e}));
@@ -65,7 +65,7 @@ Promise.resolve(5)
 
 This code will print: `Rejected with ERROR`:
 
-```
+```js
 Promise.reject('ERROR')
     .then(r => console.log(`Resolved with ${r}`))
     .catch(e => console.log(`Rejected with ${e}));
@@ -76,7 +76,7 @@ Promise.reject('ERROR')
 ## Promise Chaining
 
 If the function you pass to `then()` or `catch()` returns a value, that value will be returned by `then()` or `catch()` wrapped in a promise, unless the value itself is a promise, in which case it will be returned directly. This allows you to chain promises together:
-```
+```js
 Promise.resolve(5)
     .then(r => {
         console.log(r);
@@ -90,7 +90,7 @@ Promise.resolve(5)
 ```
 
 If any promise in this chain rejects, the rejection will be handled by the first `catch()` in the chain:
-```
+```js
 Promise.resolve(5)
     .then(r => {
         console.log(r);
@@ -107,7 +107,7 @@ Promise.resolve(5)
 ```
 
 Here's a complex example:
-```
+```js
 Promise.resolve(5)
     .then(r => {        // 1
         console.log(r);
@@ -129,7 +129,7 @@ Promise.resolve(5)
 ```
 
 Now add another `then()` after the `catch()` and note how the `catch()` is skipped
-```
+```js
 Promise.resolve(5)
     .then(r => {        // 1
         console.log(r);
@@ -148,13 +148,13 @@ Promise.resolve(5)
     })
     .then(r => {        // 5
         console.log(r);
-    })
+    });
 
 // prints "5", prints "6", prints "6" again, and finally prints "7"
 ```
 
 Now try changing step 2 in the above example to return Promise.reject(r) to see what happens:
-```
+```js
 Promise.resolve(5)
     .then(r => {        // 1
         console.log(r);
@@ -180,7 +180,7 @@ Promise.resolve(5)
 ```
 
 Notice how a rejection causes the chain to jump to the first `catch()`. Also note that the catch function returns another promise. The outcome is also the same if, instead of returning a Promise that rejects in step 2, the function throws:
-```
+```js
 Promise.resolve(5)
     .then(r => {        // 1
         console.log(r);
@@ -200,7 +200,7 @@ Promise.resolve(5)
     })
     .then(r => {        // 5
         console.log(r);
-    })
+    });
 
 // prints "5", prints "6", prints "ERROR: 6", and finally prints "10"
 ```
@@ -215,7 +215,7 @@ Promise chaining allows you to write straightforward code to chain together a se
 The `Promise` class provides two methods for running promises in parallel: `Promise.all()` and `Promise.race()`; both methods take an array of promises.
 
 `Promise.all()` will run all promises in parallel, returning a promise that resolves to an array of values from all of the promise resolutions. An example should clarify that:
-```
+```js
 Promise.all([Promise.resolve(4), Promise.resolve(5), Promise.resolve(6)])
     .then(r => console.log(r))
     .catch(e => console.log(`ERROR: ${e}`));
@@ -224,7 +224,7 @@ Promise.all([Promise.resolve(4), Promise.resolve(5), Promise.resolve(6)])
 ```
 
 However, if any of the promises in the array reject, then the promise returned by `all()` rejects with the value of the first rejection:
-```
+```js
 Promise.all([Promise.resolve(4), Promise.reject(5), Promise.resolve(6)])
     .then(r => console.log(r))
     .catch(e => console.log(`ERROR: ${e}`));
@@ -233,7 +233,7 @@ Promise.all([Promise.resolve(4), Promise.reject(5), Promise.resolve(6)])
 ```
 
 `Promise.race()` will run all promises in parallel, returning a promise that will resolve on the first promise to resolve, or reject if one of the promises rejects before any other promises have resolved. Note that in the example below, we can reliably predict the order that each promise resolves or rejects because we are using `Promise.resolve()` and `Promise.reject()`. However, most asynchronous actions are not so predictable.
-```
+```js
 Promise.race([Promise.resolve(4), Promise.resolve(5), Promise.resolve(6)])
     .then(r => console.log(r))
     .catch(e => console.log(`ERROR: ${e}`));
@@ -264,7 +264,7 @@ Promise.race([Promise.reject(4), Promise.resolve(5), Promise.reject(6)])
 ## Implementing Promises
 
 Creating your own promise implementations is relatively easy. You just create an instance of `Promise` and pass a function that takes two parameters: `resolve` and `reject`. Then you invoke the `resolve` or `reject` parameter when your promise resolves or rejects. We'll demonstrate this with a function that takes a parameter and resolves with that parameter if it is a number and rejects with that parameter if it is not a number:
-```
+```js
 function asyncNumberTest(value) {
     return new Promise((resolve, reject) => {
         if (typeof value === 'number') {

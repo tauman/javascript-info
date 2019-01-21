@@ -4,7 +4,7 @@ Unlike Java, JavaScript does not strongly bind `this`. Instead, `this` is derive
 
 
 Here is an example that illustrates how this works with regular function syntax and arrow function syntax, including a non-working version:
-```
+```js
 class Collector {
     constructor(name) {
         this.name = name;

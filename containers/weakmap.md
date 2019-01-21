@@ -1,0 +1,1 @@
+# A Use for WeakMap

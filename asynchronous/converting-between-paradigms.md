@@ -20,7 +20,7 @@ In general, it is advisable not to directly mix asynchronous paradigms, as this 
 ### Mixed Implementation
 
 An implementation of our two functions in the callback paradigm might look like:
-```
+```js
 const fs = require('fs');
 const axios = require('axios');
 
@@ -59,7 +59,7 @@ function loadAndPost(file, url, callback) {
 ### Pure Callback Implementation
 
 Since our operations are simple, the two functions, `saveFromUrl()` and `loadAndPost()` are not too difficult to follow. However, we can make them easier to understand if we wrap our calls to `axios.get()` and `axios.post()` in functions that take a callback:
-```
+```js
 const axios = require('axios');
 
 function get(url, callback) {
@@ -77,7 +77,7 @@ function post(url, data, callback) {
 
 Now we can implement `saveFromUrl()` and `loadAndPost()` as purely callback based calls:
 
-```
+```js
 const fs = require('fs');
 const axios = require('axios');
 
@@ -138,7 +138,7 @@ While having the nested "stepped" callbacks can get messy with more than two ste
 ### Mixed Implementation
 
 An implementation of our two functions in the promise paradigm might look like:
-```
+```js
 const fs = require('fs');
 const axios = require('axios');
 
@@ -182,7 +182,7 @@ function loadAndPost(file, url) {
 
 Again, our operations are simple, the two functions, `saveFromUrl()` and `loadAndPost()` are not too difficult to follow. However, we can make them easier to understand if we wrap our calls to `fs.readFile()` and `fs.writeFile()` in functions that return a promise:
 
-```
+```js
 const fs = require('fs');
 
 function readFile(file) {
@@ -211,7 +211,7 @@ function writeFile(file) {
 ```
 
 Now we can implement `saveFromUrl()` and `loadAndPost()` as purely promise based calls:
-```
+```js
 const fs = require('fs');
 const axios = require('axios');
 
@@ -253,7 +253,7 @@ function loadAndPost(file, url) {
 ## `async` Paradigm
 
 Since `async-await` and promises are interchangeable, the pure `async` implementation should be trivial. Note that `async-await` does not provide a way to directly wrap the callback code, however we can use a promise implementation and then just treat it as an `async` function:
-```
+```js
 const fs = require('fs');
 const axios = require('axios');
 

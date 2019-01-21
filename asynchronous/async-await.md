@@ -8,7 +8,7 @@ The `async-await` construct is syntactical sugar for promises; in fact, they are
 The syntax is very simple. Functions making asynchronous calls use the `async` keyword in their declaration; when making an asynchronous call, the call is preceded by the `await` keyword.
 
 Here is a simple example:
-```
+```js
 async function foo() {
     // ... async stuff here
 }
@@ -23,7 +23,7 @@ async function bar() {
 ```
 
 If we want to include error-handling, then we could rewrite `bar()`:
-```
+```js
 async function foo() {
     // ... async stuff here
 }
@@ -42,7 +42,7 @@ async function bar() {
 ```
 
 Remember that promises and `async-await` are interchangeable. This means that we can utilize `async-await` with function calls that return promises. For example, we could make an `axios` call as if it was an `async` function.
-```
+```js
 const axios = require('axios');
 
 const userUrl = 'https://jsonplaceholder.typicode.com/users';
@@ -112,7 +112,7 @@ Promise {
 ```
 
 They are **exactly the same**. Now it should be obvious why promises and `async-await` can be intermixed: the underlying implementation is identical. This means that you can also use `then()` and `catch()` from the `Promise` API on `async` functions:
-```
+```js
 async function foo() {
     return 5; // Remember that this is the same as Promise.resolve(5)
 }
