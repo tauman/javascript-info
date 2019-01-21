@@ -12,29 +12,30 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 ## Asynchronous JavaScript
 - [Callbacks](./asynchronous/callbacks.md)
 - [Promises](./asynchronous/promises.md)
-- [Async-Await](./asynchronous/async-await.md)
+- [Async-Await](./asynchronous/async-await.md) **(TODO)**
 - [Converting Between Paradigms](./asynchronous/converting-between-paradigms.md)
 - [Miscellaneous Asynchronous Topics](./asynchronous/miscellaneous.md)
 
 ## Functions
-- [The Function Syntax Types](./functions/syntax.md)
-- [Arrow Functions and `this`](./arrow-functions.md)
+- [The Function Syntax Types](./functions/syntax.md) **(TODO)**
+- [Arrow Functions and `this`](./functions/arrow-functions.md) **(TODO)**
 
 ## Functional Concepts:
-- [Pure Functions](./fp-concepts/pure-functions.md)
-- [Higher Order Functions](./fp-concepts/higher-order.md)
-- [Closures](./fp-concepts/closures.md)
+- [Pure Functions](./fp-concepts/pure-functions.md) **(TODO)**
+- [Higher Order Functions](./fp-concepts/higher-order.md) **(TODO)**
+- [Closures](./fp-concepts/closures.md) **(TODO)**
 
-## Destructuring, the Spead Operator, Default Parameters, and Other ES6 Sugar
-- [Destructuring Arrays](./sugar/destructuring-arrays.md)
-- [Destructuring Objects](./sugar/destructuring-objects.md)
-- [Spread Operator](./sugar/spread-operator.md)
-- [Default Parameters](./sugar/default-parameters.md)
+## Destructuring, the Spead Operator, Default Parameters, and Other ES6 Syntactic Sugar
+- [Destructuring Arrays](./sugar/destructuring-arrays.md) **(TODO)**
+- [Destructuring Objects](./sugar/destructuring-objects.md) **(TODO)**
+- [Spread Operator](./sugar/spread-operator.md) **(TODO)**
+- [Default Parameters](./sugar/default-parameters.md) **(TODO)**
 
 ## ES6 Classes:
-- [Getters and Setters](./classes/getters-setters.md)
+- [Getters and Setters](./classes/getters-setters.md) **(TODO)**
+- [Private Member Notation](./classes/private-members.md) **(TODO)**
 
 ## ES6 Containers:
-- [Set](./containers/set.md)
-- [Map](./containers/map.md)
-- [A Use for WeakMap](./containers/weakmap.md)
+- [Set](./containers/set.md) **(TODO)**
+- [Map](./containers/map.md) **(TODO)**
+- [A Use for WeakMap](./containers/weakmap.md) **(TODO)**
