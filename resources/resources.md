@@ -33,4 +33,4 @@
 ## Books
 
 ![Effective JavaScript](../images/EffectiveJavaScript.png)
-![Understanding ECMAScript 6](../images/UnderstandingECMaScript6.png)
+![Understanding ECMAScript 6](../images/UnderstandingECMAScript6.png)
