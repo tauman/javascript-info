@@ -20,7 +20,7 @@ class Collector {
     }
 
     printItemsBroken() {
-        // 1. Why does this break?
+        // 1. This will break
         this.collection.forEach(function(item) {
             console.log(this.formatItem(item));
         });

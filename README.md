@@ -17,7 +17,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Miscellaneous Asynchronous Topics](./asynchronous/miscellaneous.md)
 
 ## Functions
-- [The Function Syntax Types](./functions/syntax.md) **(TODO)**
+- [The Function Syntax Types](./functions/syntax.md)
 - [Arrow Functions and `this`](./functions/arrow-functions.md) **(TODO)**
 
 ## Functional Concepts:
