@@ -23,6 +23,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 ## Functional Concepts:
 - [Pure Functions](./fp-concepts/pure-functions.md) **(TODO)**
 - [Higher Order Functions](./fp-concepts/higher-order.md) **(TODO)**
+- [Using Lists the Functional Way](./fp-functional-lists.md) **(TODO)**
 - [Closures](./fp-concepts/closures.md) **(TODO)**
 
 ## Destructuring, the Spead Operator, Default Parameters, and Other ES6 Syntactic Sugar

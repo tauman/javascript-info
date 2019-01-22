@@ -107,7 +107,7 @@ fs.readFile(credFile, function(error, result) {
     const credentials = result.toString('utf8');
 
     console.log(credentials);
-}
+});
 ```
 
 Or even better, using an arrow function:
@@ -124,7 +124,7 @@ fs.readFile(credFile, (error, result) => {
     const credentials = result.toString('utf8');
 
     console.log(credentials);
-}
+});
 ```
 
 <div id='section2'/>
