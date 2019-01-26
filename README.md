@@ -38,8 +38,8 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Private Member Notation](./classes/private-members.md) **(TODO)**
 
 ## ES6 Containers:
-- [ES6 Containers](./containers/containers.md)
-- [A Use for WeakMap](./containers/weakmap.md)
+- [`Set` and `Map`](./containers/containers.md)
+- [A Use for `WeakMap`](./containers/weakmap.md)
 
 ## JavaScript and ES6 Resources
 - [Books and Websites](./resources/resources.md) **(TODO)**
