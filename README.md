@@ -21,7 +21,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Arrow Functions and `this`](./functions/arrow-functions.md) **(TODO)**
 
 ## Functional Concepts:
-- [Pure Functions](./fp-concepts/pure-functions.md) **(TODO)**
+- [Pure Functions](./fp-concepts/pure-functions.md)
 - [Higher Order Functions](./fp-concepts/higher-order.md) **(TODO)**
 - [Lists the Functional Way](./fp-concepts/functional-lists.md) **(TODO)**
 - [Closures](./fp-concepts/closures.md) **(TODO)**
