@@ -1,7 +1,7 @@
 # JavaScript Overview
 
 ## The Node.js Event Loop
-Here is an excellent five-part article that explains how the Node.js event loop works in great detail:
+Here is an excellent five-part article that explains how the Node.js event loop works in great detail (external website):
 
 1. [Event Loop and the Big Picture](https://jsblog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810)
 2. [Timers, Immediates and Next Ticks](https://jsblog.insiderattack.net/timers-immediates-and-process-nexttick-nodejs-event-loop-part-2-2c53fd511bb3)
@@ -31,6 +31,7 @@ Here is an excellent five-part article that explains how the Node.js event loop 
 - [Destructuring Objects](./sugar/destructuring-objects.md) **(TODO)**
 - [Spread Operator](./sugar/spread-operator.md) **(TODO)**
 - [Default Parameters](./sugar/default-parameters.md) **(TODO)**
+- [Using `bind()`](./sugar/bind.md) **(TODO)**
 
 ## ES6 Classes:
 - [Getters and Setters](./classes/getters-setters.md) **(TODO)**

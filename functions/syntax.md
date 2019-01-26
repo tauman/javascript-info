@@ -96,6 +96,12 @@ If the value returned is an object literal, then that value must be placed in pa
 const thud = (param1, param2) => ({ param1, param2 });
 ```
 
+If any parameters are destructured (see [Destructuring Objects](../sugar/destructuring-objects.md)), then the parameters must be in parenthesis:
+```js
+const concatName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
+```
+
+
 `async` can also be used with arrow functions:
 ```js
 const foo = async (x, y) => {
