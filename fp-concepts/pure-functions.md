@@ -90,10 +90,10 @@ function now() {
     return Date.now();
 }
 
-
 let x = 5;
 
-// This function depends upon the value of a variable `x` that is defined and visible outside the scope of the function
+// This function depends upon the value of a variable `x`
+// which is defined and visible outside the scope of the function
 function foo(y) {
     return x + y
 }
@@ -124,9 +124,8 @@ obj.x = 4;
 ary[1] = 4;
 ```
 
-Note that `Object.seal()` and `Object.freeze()` only seal and freeze the object's direct properties, not properties of properties:
+Note that `Object.freeze()` only freezes the object's direct properties, not properties of properties:
 ```js
-
 let obj = {
     x: 1,
     y: {
@@ -141,6 +140,5 @@ obj.x = 11; // this results in an error
 
 obj.y.a = 31 // this does NOT result in an error
 ```
-
 
 
