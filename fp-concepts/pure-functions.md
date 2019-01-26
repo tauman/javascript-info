@@ -144,15 +144,11 @@ obj.y.a = 31 // this does NOT result in an error
 Here is a utility function that will set all properties of an object and any nested objects to be immutable:
 ```js
 function deepFreeze(object, excludeSet = new Set()) {
-    console.log(object)
-
     if (object === undefined || object === null || typeof object !== 'object') {
-        console.log('skip');
         return;
     }
 
     if (excludeSet.has(object)) {
-        console.log(`exclude`)
         return;
     }
 
