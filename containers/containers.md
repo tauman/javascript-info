@@ -131,7 +131,6 @@ const AARON = 'Aaron';
 
 const map = new Map([[JOE, 'good'], [TOM, 'fair'], [MIKE, 'bad'], [AARON, 'good']]);
 
-
 // return an array containing all of the items in `set` converted to upper case.
 const goodNames = [...map].filter(([name, rating]) => rating === 'good');
 ```
