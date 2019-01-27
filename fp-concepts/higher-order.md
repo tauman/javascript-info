@@ -100,7 +100,37 @@ const add5 = addGenerator(5);
 
 ## Functions that Take a Function as a Parameter and Return a Function
 
+Taking a function and returning another function might be used to adapt the interface of a function to take parameters in a particular order:
 ```js
+
+```
+
+This technique can also be used to add functionality. For example, if you wanted to add a logging call to a callback without changing the implementation of the callback:
+```js
+const fs = require('fs');
+
+// Create the callback
+const callback = (error, files) => {
+    if(error) {
+        console.log(`ERROR: ${error.message}`)
+        return;
+    }
+
+    console.log(files);
+};
+
+// Now create a function that wraps the callback, making a console.log() call:
+const wrapCallback(callback) {
+    return function(error, result) {
+        console.log(`Callback was called with error: "${error.message}"" result: "${result}"`);
+        callback(error, result);
+    }
+}
+
+// List the files in the current directory using our callback
+fs.readdir('.', wrapCallback(callback));
+```
+
 // take a function 'applier' and return a new function that applies
 // the original function 'applier' in a value.
 function applyGenerator(applier) {
@@ -112,3 +142,5 @@ const doubleApply = applyGenerator(num => 2 * num);
 console.log(doubleApply);  // <- this is a function
 console.log(doubleApply(5));  // <- this is the result of the function
 ```
+
+
