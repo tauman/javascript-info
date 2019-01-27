@@ -130,17 +130,3 @@ const wrapCallback(callback) {
 // List the files in the current directory using our callback
 fs.readdir('.', wrapCallback(callback));
 ```
-
-// take a function 'applier' and return a new function that applies
-// the original function 'applier' in a value.
-function applyGenerator(applier) {
-    return value => applier(value);
-}
-
-const doubleApply = applyGenerator(num => 2 * num);
-
-console.log(doubleApply);  // <- this is a function
-console.log(doubleApply(5));  // <- this is the result of the function
-```
-
-
