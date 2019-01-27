@@ -112,3 +112,5 @@ const doubleApply = applyGenerator(num => 2 * num);
 console.log(doubleApply);  // <- this is a function
 console.log(doubleApply(5));  // <- this is the result of the function
 ```
+
+
