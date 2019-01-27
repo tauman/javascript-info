@@ -81,9 +81,7 @@ fs.readdir('.', callback);
 
 ## Functions that Return a Function
 
-// --------------------------------------------------------------- //
-
-
+```js
 // Take a value 'addValue' and return a function that adds that
 // value to another value.
 //
@@ -96,14 +94,13 @@ const add5 = addGenerator(5);
 
 // console.log(add5);  // <- this is a function
 // console.log(add5(7));  // <- this is the result of the function
-
+```
 
 <div id="section4"/>
 
 ## Functions that Take a Function as a Parameter and Return a Function
 
-// --------------------------------------------------------------- //
-
+```js
 // take a function 'applier' and return a new function that applies
 // the original function 'applier' in a value.
 function applyGenerator(applier) {
@@ -112,5 +109,6 @@ function applyGenerator(applier) {
 
 const doubleApply = applyGenerator(num => 2 * num);
 
-// console.log(doubleApply);  // <- this is a function
-// console.log(doubleApply(5));  // <- this is the result of the function
+console.log(doubleApply);  // <- this is a function
+console.log(doubleApply(5));  // <- this is the result of the function
+```
